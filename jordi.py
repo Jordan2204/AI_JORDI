@@ -24,7 +24,7 @@ from classes.Translation import *
 #Configuration du package de traduction
 engine = pyttsx3.init()
 
-#Type de voix
+#Types de voix
 try:
     voices = engine.getProperty('voices')
     engine.setProperty('voice', voices[0].id)
@@ -47,11 +47,11 @@ SystemTask = System(datetime, os, random, psutil, pyautogui,Speaker)
 JokeSpeaker = Joke(pyjokes, Speaker)
 MailManage = Mail(smtplib)
 Translation_lang = Translation(cur_lang)
+
 #On se place dans le dossier system32 pour avoir accès a toutes les commandes
 os.chdir("c:\Windows\system32")
-
-path_data = "E:/MES PROJETS (programmation)/projest IA/IA_JORDI"
-path_data2 = "E:\\MES PROJETS (programmation)\\projest IA\\IA_JORDI"
+path_data = "E:/MES PROJETS (programmation)/projest IA/IA_JORDI/"
+path_data2 = "E:\\MES PROJETS (programmation)\\projest IA\\IA_JORDI\\"
    
 #Début du programme
 pause = False
@@ -63,21 +63,22 @@ TimeSpeak.wishme()
 while program == True:
     #Recupération de la commande 
     query = TakeCommandS.takeComand().lower()
-    if "jordy" in query:
+    if "jordy" in query or "jordi" in query:
         pause = False
         Speaker.speak("Oui patron que puis-je faire pour vous ?")
     while pause == False:
         #Recupération de la commande 
-        query = TakeCommandS.takeComand().lower()
-        
+        query = TakeCommandS.takeComand().lower()        
         #Changement de la langue
-        if Translation_lang.changeLang() in query:
+        if Translation_lang.changLang() in query:
             if cur_lang == 1:
                 cur_lang = 0
                 Translation_lang.setCurLang(0)
+                Speaker.speak("Je m'exprime maintenant en français")
             else:
                 cur_lang = 1
                 Translation_lang.setCurLang(1)
+                Speaker.speak("I will speak now in english")
             
         if "temps" in query:
             TimeSpeak.time()

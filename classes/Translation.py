@@ -1,11 +1,10 @@
 class Translation(object):
     """ 
-        Cette classe permettra de gérer le multi langue francais et anglais
+        Cette classe permettra de gérer le multi lange francais et anglais
         y compris l'utilisation des expressions régulière. fr = 0, en = 1
     """
     def __init__(self,lang=0):
         super().__init__()
-        
         self.lang = lang
     
     def setCurLang(self,lang):
@@ -15,7 +14,7 @@ class Translation(object):
         return self.lang
     
     def changLang(self):
-        chlang = ["changer de langue", "Change the langage"]
+        chlang = ["changer de langue", "change the language"]
         return chlang[self.lang]
 
     def salutation(self):
